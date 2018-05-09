@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.xingen.movie">
+    <!-- 集成模式下开发模式：
+        1. 不能有Application和主的Activity
+        2. 不能声明App名称、图标等属性
+     -->
+    <application android:theme="@style/AppTheme">
+        <activity android:name="debug.MovieListActivity"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,60 @@
+apply plugin: 'com.android.library'
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //Android Support ，任何一个module依赖的官方包都在这里配置
+    api(rootProject.ext.dependencies.appcompatV7) {
+        exclude module: "support-annotations"
+        exclude module: "support-v4"
+    }
+    api(rootProject.ext.dependencies.support_v4) {
+        exclude module: "support-annotations"
+    }
+    api rootProject.ext.dependencies.recycleview
+    api rootProject.ext.dependencies.design
+    api rootProject.ext.dependencies.annotations
+    // arouter 依赖
+    api rootProject.ext.dependencies.arouter_api
+    //rxJava
+    api(rootProject.ext.dependencies.rxJava) {
+        exclude module: "rxAndroid"
+    }
+    api rootProject.ext.dependencies.rxAndroid
+    //sqlbrite
+    api rootProject.ext.dependencies.sqlBrite
+    //retrofit
+    api rootProject.ext.dependencies.retrofit
+    api rootProject.ext.dependencies.converter_gson
+    api rootProject.ext.dependencies.adapter_rxjava
+    // okhttp
+    api rootProject.ext.dependencies.okhttp
+    api rootProject.ext.dependencies.logging_interceptor
+    //glide
+    api rootProject.ext.dependencies.glide
+
+}
