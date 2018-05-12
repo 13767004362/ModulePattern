@@ -1,14 +1,22 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'com.alibaba.arouter'
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
         applicationId "com.xingen.app"
-        minSdkVersion  rootProject.ext.android.minSdkVersion
+        minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //   集成模式下Arouter的配置，用于组件间通信的实现
+        if (!rootProject.ext.isAlone) {
+            javaCompileOptions {
+                annotationProcessorOptions {
+                    arguments = [moduleName: project.getName()]
+                }
+            }
+        }
     }
     buildTypes {
         release {
@@ -31,5 +39,7 @@ dependencies {
         implementation project(':main')
         implementation project(':movie')
         implementation project(':collection')
+        ////集成模式下需要编译器生成路由通信的代码
+        annotationProcessor rootProject.ext.dependencies.arouter_compiler
     }
 }

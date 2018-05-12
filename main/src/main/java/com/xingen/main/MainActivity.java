@@ -13,6 +13,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.xingen.commonlibrary.BaseActivity;
 import com.xingen.commonlibrary.router.CollectionMovieProvider;
 import com.xingen.commonlibrary.router.MovieListProvider;
+import com.xingen.commonlibrary.router.RouterPath;
 
 /**
  * Created by ${xinGen} on 2018/5/9 0009.
@@ -21,18 +22,22 @@ import com.xingen.commonlibrary.router.MovieListProvider;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     @Autowired
-    private MovieListProvider movieListProvider;
-
+    MovieListProvider movieListProvider;
     @Autowired
-    private CollectionMovieProvider collectionMovieProvider;
+    CollectionMovieProvider collectionMovieProvider;
 
     @Override
     public void init(Bundle savedInstanceState) {
         ARouter.getInstance().inject(this);
         initView();
-        Fragment fragment=movieListProvider.createFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.movielist_content_layout,fragment).commit();
+        Fragment fragment = movieListProvider.createFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.movielist_content_layout, fragment).commit();
     }
+
+/*    private void initRoute() {
+        movieListProvider=(MovieListProvider) ARouter.getInstance().build(RouterPath.PATH_MOVIE_LIST).navigation();
+        collectionMovieProvider=(CollectionMovieProvider) ARouter.getInstance().build(RouterPath.PATH_COLLECTION_MOVIE).navigation();
+    }*/
 
     /**
      * 初始化控件
@@ -50,8 +55,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.activity_movielist_drawer_collect) {//转调收藏电影的界面.
-              collectionMovieProvider.seeCollectionMovie(this);
-        }else if (item.getItemId()==R.id.activity_movielist_drawer_movielist){
+            collectionMovieProvider.seeCollectionMovie(this);
+        } else if (item.getItemId() == R.id.activity_movielist_drawer_movielist) {
 
         }
         //关闭抽屉菜单

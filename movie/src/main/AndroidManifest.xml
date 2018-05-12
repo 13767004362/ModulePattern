@@ -5,7 +5,7 @@
         1. 不能有Application和主的Activity
         2. 不能声明App名称、图标等属性
      -->
-    <application android:theme="@style/AppTheme">
+    <application android:theme="@style/AppTheme.OverSystemBar">
         <activity android:name="debug.MovieListActivity"></activity>
     </application>
 

@@ -16,7 +16,7 @@ public class MovieListActivity extends BaseActivity {
 
     @Override
     public void init(Bundle savedInstanceState) {
-       provider=(MovieListProvider) ARouter.getInstance().build(RouterPath.PATH_MOVIE_LIST).navigation();;
+       provider=(MovieListProvider) ARouter.getInstance().build(RouterPath.PATH_MOVIE_LIST).navigation();
        Fragment fragment= provider.createFragment();
        getSupportFragmentManager().beginTransaction().add(R.id.main_movie_list_layout,fragment).commit();
     }

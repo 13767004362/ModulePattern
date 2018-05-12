@@ -1,6 +1,6 @@
 // 第三方库，App的版本号的管理和组件模式的切换配置
 ext{
-    isAlone=true; //false:作为Lib集成存在， true:作为application组件存在
+    isAlone=false; //false:作为Lib集成存在， true:作为application组件存在
 
     android = [
             compileSdkVersion : 27,

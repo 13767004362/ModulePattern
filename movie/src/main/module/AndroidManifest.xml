@@ -9,7 +9,7 @@
         android:name="debug.MovieListApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.OverSystemBar">
         <activity android:name="debug.MovieListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

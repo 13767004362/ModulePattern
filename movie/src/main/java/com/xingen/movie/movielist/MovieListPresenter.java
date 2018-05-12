@@ -57,7 +57,6 @@ public class MovieListPresenter implements MovieListContract.Presenter {
                     view.showToast("加载失败");
                 }
             }
-
             @Override
             public void onNext(List<Movie> list) {
                 view.loadMovieList(list);
@@ -89,8 +88,7 @@ public class MovieListPresenter implements MovieListContract.Presenter {
                 observeOn(AndroidSchedulers.mainThread()).
                 subscribe(new Observer<Boolean>() {
                     @Override
-                    public void onCompleted() {
-                    }
+                    public void onCompleted() {}
                     @Override
                     public void onError(Throwable e) {
                         if (isViewBind()) {
